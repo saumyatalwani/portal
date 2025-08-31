@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 import { fetchProfile } from "@/lib/codechef";
 
 export async function GET(
-  req: Request,
-  { params }: { params: { handle: string } }
+  req: NextRequest,
+  context: any
 ) {
-  const { handle } = params;
+  const { handle } = context.params;
 
   if (!handle || handle === "favicon.ico") {
     return NextResponse.json(

@@ -12,18 +12,18 @@ model student {
   rollNo String @id
   name   String
 
-  cf_id         String  @unique
+  cf_id         String? @unique
   cf_rating     Int?
   cf_max_rating Int?
   cf_max_rank   String?
   cf_rank       String?
 
-  lc_id          String  @unique
+  lc_id          String? @unique
   lc_ranking     Int?
   lc_star_rating Float?
   lc_badge       String?
 
-  cc_id             String  @unique
+  cc_id             String? @unique
   cc_current_rating Int?
   cc_max_rating     Int?
   cc_star_rating    String?
