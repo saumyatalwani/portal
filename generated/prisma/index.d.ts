@@ -1698,16 +1698,16 @@ export namespace Prisma {
   export type StudentGroupByOutputType = {
     rollNo: string
     name: string
-    cf_id: string
+    cf_id: string | null
     cf_rating: number | null
     cf_max_rating: number | null
     cf_max_rank: string | null
     cf_rank: string | null
-    lc_id: string
+    lc_id: string | null
     lc_ranking: number | null
     lc_star_rating: number | null
     lc_badge: string | null
-    cc_id: string
+    cc_id: string | null
     cc_current_rating: number | null
     cc_max_rating: number | null
     cc_star_rating: string | null
@@ -1812,16 +1812,16 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       rollNo: string
       name: string
-      cf_id: string
+      cf_id: string | null
       cf_rating: number | null
       cf_max_rating: number | null
       cf_max_rank: string | null
       cf_rank: string | null
-      lc_id: string
+      lc_id: string | null
       lc_ranking: number | null
       lc_star_rating: number | null
       lc_badge: string | null
-      cc_id: string
+      cc_id: string | null
       cc_current_rating: number | null
       cc_max_rating: number | null
       cc_star_rating: string | null
@@ -9629,16 +9629,16 @@ export namespace Prisma {
     NOT?: studentWhereInput | studentWhereInput[]
     rollNo?: StringFilter<"student"> | string
     name?: StringFilter<"student"> | string
-    cf_id?: StringFilter<"student"> | string
+    cf_id?: StringNullableFilter<"student"> | string | null
     cf_rating?: IntNullableFilter<"student"> | number | null
     cf_max_rating?: IntNullableFilter<"student"> | number | null
     cf_max_rank?: StringNullableFilter<"student"> | string | null
     cf_rank?: StringNullableFilter<"student"> | string | null
-    lc_id?: StringFilter<"student"> | string
+    lc_id?: StringNullableFilter<"student"> | string | null
     lc_ranking?: IntNullableFilter<"student"> | number | null
     lc_star_rating?: FloatNullableFilter<"student"> | number | null
     lc_badge?: StringNullableFilter<"student"> | string | null
-    cc_id?: StringFilter<"student"> | string
+    cc_id?: StringNullableFilter<"student"> | string | null
     cc_current_rating?: IntNullableFilter<"student"> | number | null
     cc_max_rating?: IntNullableFilter<"student"> | number | null
     cc_star_rating?: StringNullableFilter<"student"> | string | null
@@ -9647,16 +9647,16 @@ export namespace Prisma {
   export type studentOrderByWithRelationInput = {
     rollNo?: SortOrder
     name?: SortOrder
-    cf_id?: SortOrder
+    cf_id?: SortOrderInput | SortOrder
     cf_rating?: SortOrderInput | SortOrder
     cf_max_rating?: SortOrderInput | SortOrder
     cf_max_rank?: SortOrderInput | SortOrder
     cf_rank?: SortOrderInput | SortOrder
-    lc_id?: SortOrder
+    lc_id?: SortOrderInput | SortOrder
     lc_ranking?: SortOrderInput | SortOrder
     lc_star_rating?: SortOrderInput | SortOrder
     lc_badge?: SortOrderInput | SortOrder
-    cc_id?: SortOrder
+    cc_id?: SortOrderInput | SortOrder
     cc_current_rating?: SortOrderInput | SortOrder
     cc_max_rating?: SortOrderInput | SortOrder
     cc_star_rating?: SortOrderInput | SortOrder
@@ -9686,16 +9686,16 @@ export namespace Prisma {
   export type studentOrderByWithAggregationInput = {
     rollNo?: SortOrder
     name?: SortOrder
-    cf_id?: SortOrder
+    cf_id?: SortOrderInput | SortOrder
     cf_rating?: SortOrderInput | SortOrder
     cf_max_rating?: SortOrderInput | SortOrder
     cf_max_rank?: SortOrderInput | SortOrder
     cf_rank?: SortOrderInput | SortOrder
-    lc_id?: SortOrder
+    lc_id?: SortOrderInput | SortOrder
     lc_ranking?: SortOrderInput | SortOrder
     lc_star_rating?: SortOrderInput | SortOrder
     lc_badge?: SortOrderInput | SortOrder
-    cc_id?: SortOrder
+    cc_id?: SortOrderInput | SortOrder
     cc_current_rating?: SortOrderInput | SortOrder
     cc_max_rating?: SortOrderInput | SortOrder
     cc_star_rating?: SortOrderInput | SortOrder
@@ -9712,16 +9712,16 @@ export namespace Prisma {
     NOT?: studentScalarWhereWithAggregatesInput | studentScalarWhereWithAggregatesInput[]
     rollNo?: StringWithAggregatesFilter<"student"> | string
     name?: StringWithAggregatesFilter<"student"> | string
-    cf_id?: StringWithAggregatesFilter<"student"> | string
+    cf_id?: StringNullableWithAggregatesFilter<"student"> | string | null
     cf_rating?: IntNullableWithAggregatesFilter<"student"> | number | null
     cf_max_rating?: IntNullableWithAggregatesFilter<"student"> | number | null
     cf_max_rank?: StringNullableWithAggregatesFilter<"student"> | string | null
     cf_rank?: StringNullableWithAggregatesFilter<"student"> | string | null
-    lc_id?: StringWithAggregatesFilter<"student"> | string
+    lc_id?: StringNullableWithAggregatesFilter<"student"> | string | null
     lc_ranking?: IntNullableWithAggregatesFilter<"student"> | number | null
     lc_star_rating?: FloatNullableWithAggregatesFilter<"student"> | number | null
     lc_badge?: StringNullableWithAggregatesFilter<"student"> | string | null
-    cc_id?: StringWithAggregatesFilter<"student"> | string
+    cc_id?: StringNullableWithAggregatesFilter<"student"> | string | null
     cc_current_rating?: IntNullableWithAggregatesFilter<"student"> | number | null
     cc_max_rating?: IntNullableWithAggregatesFilter<"student"> | number | null
     cc_star_rating?: StringNullableWithAggregatesFilter<"student"> | string | null
@@ -10209,16 +10209,16 @@ export namespace Prisma {
   export type studentCreateInput = {
     rollNo: string
     name: string
-    cf_id: string
+    cf_id?: string | null
     cf_rating?: number | null
     cf_max_rating?: number | null
     cf_max_rank?: string | null
     cf_rank?: string | null
-    lc_id: string
+    lc_id?: string | null
     lc_ranking?: number | null
     lc_star_rating?: number | null
     lc_badge?: string | null
-    cc_id: string
+    cc_id?: string | null
     cc_current_rating?: number | null
     cc_max_rating?: number | null
     cc_star_rating?: string | null
@@ -10227,16 +10227,16 @@ export namespace Prisma {
   export type studentUncheckedCreateInput = {
     rollNo: string
     name: string
-    cf_id: string
+    cf_id?: string | null
     cf_rating?: number | null
     cf_max_rating?: number | null
     cf_max_rank?: string | null
     cf_rank?: string | null
-    lc_id: string
+    lc_id?: string | null
     lc_ranking?: number | null
     lc_star_rating?: number | null
     lc_badge?: string | null
-    cc_id: string
+    cc_id?: string | null
     cc_current_rating?: number | null
     cc_max_rating?: number | null
     cc_star_rating?: string | null
@@ -10245,16 +10245,16 @@ export namespace Prisma {
   export type studentUpdateInput = {
     rollNo?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    cf_id?: StringFieldUpdateOperationsInput | string
+    cf_id?: NullableStringFieldUpdateOperationsInput | string | null
     cf_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cf_max_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cf_max_rank?: NullableStringFieldUpdateOperationsInput | string | null
     cf_rank?: NullableStringFieldUpdateOperationsInput | string | null
-    lc_id?: StringFieldUpdateOperationsInput | string
+    lc_id?: NullableStringFieldUpdateOperationsInput | string | null
     lc_ranking?: NullableIntFieldUpdateOperationsInput | number | null
     lc_star_rating?: NullableFloatFieldUpdateOperationsInput | number | null
     lc_badge?: NullableStringFieldUpdateOperationsInput | string | null
-    cc_id?: StringFieldUpdateOperationsInput | string
+    cc_id?: NullableStringFieldUpdateOperationsInput | string | null
     cc_current_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cc_max_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cc_star_rating?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10263,16 +10263,16 @@ export namespace Prisma {
   export type studentUncheckedUpdateInput = {
     rollNo?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    cf_id?: StringFieldUpdateOperationsInput | string
+    cf_id?: NullableStringFieldUpdateOperationsInput | string | null
     cf_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cf_max_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cf_max_rank?: NullableStringFieldUpdateOperationsInput | string | null
     cf_rank?: NullableStringFieldUpdateOperationsInput | string | null
-    lc_id?: StringFieldUpdateOperationsInput | string
+    lc_id?: NullableStringFieldUpdateOperationsInput | string | null
     lc_ranking?: NullableIntFieldUpdateOperationsInput | number | null
     lc_star_rating?: NullableFloatFieldUpdateOperationsInput | number | null
     lc_badge?: NullableStringFieldUpdateOperationsInput | string | null
-    cc_id?: StringFieldUpdateOperationsInput | string
+    cc_id?: NullableStringFieldUpdateOperationsInput | string | null
     cc_current_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cc_max_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cc_star_rating?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10281,16 +10281,16 @@ export namespace Prisma {
   export type studentCreateManyInput = {
     rollNo: string
     name: string
-    cf_id: string
+    cf_id?: string | null
     cf_rating?: number | null
     cf_max_rating?: number | null
     cf_max_rank?: string | null
     cf_rank?: string | null
-    lc_id: string
+    lc_id?: string | null
     lc_ranking?: number | null
     lc_star_rating?: number | null
     lc_badge?: string | null
-    cc_id: string
+    cc_id?: string | null
     cc_current_rating?: number | null
     cc_max_rating?: number | null
     cc_star_rating?: string | null
@@ -10299,16 +10299,16 @@ export namespace Prisma {
   export type studentUpdateManyMutationInput = {
     rollNo?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    cf_id?: StringFieldUpdateOperationsInput | string
+    cf_id?: NullableStringFieldUpdateOperationsInput | string | null
     cf_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cf_max_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cf_max_rank?: NullableStringFieldUpdateOperationsInput | string | null
     cf_rank?: NullableStringFieldUpdateOperationsInput | string | null
-    lc_id?: StringFieldUpdateOperationsInput | string
+    lc_id?: NullableStringFieldUpdateOperationsInput | string | null
     lc_ranking?: NullableIntFieldUpdateOperationsInput | number | null
     lc_star_rating?: NullableFloatFieldUpdateOperationsInput | number | null
     lc_badge?: NullableStringFieldUpdateOperationsInput | string | null
-    cc_id?: StringFieldUpdateOperationsInput | string
+    cc_id?: NullableStringFieldUpdateOperationsInput | string | null
     cc_current_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cc_max_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cc_star_rating?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10317,16 +10317,16 @@ export namespace Prisma {
   export type studentUncheckedUpdateManyInput = {
     rollNo?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    cf_id?: StringFieldUpdateOperationsInput | string
+    cf_id?: NullableStringFieldUpdateOperationsInput | string | null
     cf_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cf_max_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cf_max_rank?: NullableStringFieldUpdateOperationsInput | string | null
     cf_rank?: NullableStringFieldUpdateOperationsInput | string | null
-    lc_id?: StringFieldUpdateOperationsInput | string
+    lc_id?: NullableStringFieldUpdateOperationsInput | string | null
     lc_ranking?: NullableIntFieldUpdateOperationsInput | number | null
     lc_star_rating?: NullableFloatFieldUpdateOperationsInput | number | null
     lc_badge?: NullableStringFieldUpdateOperationsInput | string | null
-    cc_id?: StringFieldUpdateOperationsInput | string
+    cc_id?: NullableStringFieldUpdateOperationsInput | string | null
     cc_current_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cc_max_rating?: NullableIntFieldUpdateOperationsInput | number | null
     cc_star_rating?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10895,17 +10895,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -10919,6 +10908,17 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type FloatNullableFilter<$PrismaModel = never> = {
@@ -11027,22 +11027,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -11059,6 +11043,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -11476,16 +11476,16 @@ export namespace Prisma {
     set?: string
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type NullableFloatFieldUpdateOperationsInput = {
@@ -11702,17 +11702,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -11725,6 +11714,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
@@ -11766,22 +11766,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -11797,6 +11781,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
