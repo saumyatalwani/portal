@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/common/DataTable";
 import { ArrowUpDown } from "lucide-react";
 import { ColumnDef } from "@tanstack/react-table";
-import { logs } from "@/generated/prisma";
+import { logs } from "@/app/generated/prisma";
 import React from "react";
 
 export default function LogTable({data}: {
