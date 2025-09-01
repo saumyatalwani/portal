@@ -52,8 +52,9 @@ export async function GET(req: Request) {
   }
 
   const handles: string[] = list
-    .map((h:any) => h.cc_id.trim())
-    .filter(Boolean);
+  .filter((h: any) => h.cc_id !== null)
+  .map((h: any) => h.cc_id.trim())
+  .filter(Boolean);
 
   try {
     const results: ProfileResult[] = await fetchProfiles(handles);
