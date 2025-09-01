@@ -235,6 +235,10 @@ const config = {
         "fromEnvVar": null,
         "value": "darwin-arm64",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -252,6 +256,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -260,8 +265,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel student {\n  rollNo String @id\n  name   String\n\n  cf_id         String? @unique\n  cf_rating     Int?\n  cf_max_rating Int?\n  cf_max_rank   String?\n  cf_rank       String?\n\n  lc_id          String? @unique\n  lc_ranking     Int?\n  lc_star_rating Float?\n  lc_badge       String?\n\n  cc_id             String? @unique\n  cc_current_rating Int?\n  cc_max_rating     Int?\n  cc_star_rating    String?\n}\n\nmodel User {\n  id            String    @id @default(uuid())\n  name          String\n  email         String\n  emailVerified Boolean\n  image         String?\n  createdAt     DateTime\n  updatedAt     DateTime\n  sessions      Session[]\n  accounts      Account[]\n\n  apikeys Apikey[]\n\n  @@unique([email])\n  @@map(\"user\")\n}\n\nmodel Session {\n  id        String   @id\n  expiresAt DateTime\n  token     String\n  createdAt DateTime\n  updatedAt DateTime\n  ipAddress String?\n  userAgent String?\n  userId    String\n  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@unique([token])\n  @@map(\"session\")\n}\n\nmodel Account {\n  id                    String    @id\n  accountId             String\n  providerId            String\n  userId                String\n  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)\n  accessToken           String?\n  refreshToken          String?\n  idToken               String?\n  accessTokenExpiresAt  DateTime?\n  refreshTokenExpiresAt DateTime?\n  scope                 String?\n  password              String?\n  createdAt             DateTime\n  updatedAt             DateTime\n\n  @@map(\"account\")\n}\n\nmodel Verification {\n  id         String    @id\n  identifier String\n  value      String\n  expiresAt  DateTime\n  createdAt  DateTime?\n  updatedAt  DateTime?\n\n  @@map(\"verification\")\n}\n\nmodel Apikey {\n  id                  String    @id\n  name                String?\n  start               String?\n  prefix              String?\n  key                 String\n  userId              String\n  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)\n  refillInterval      Int?\n  refillAmount        Int?\n  lastRefillAt        DateTime?\n  enabled             Boolean?\n  rateLimitEnabled    Boolean?\n  rateLimitTimeWindow Int?\n  rateLimitMax        Int?\n  requestCount        Int?\n  remaining           Int?\n  lastRequest         DateTime?\n  expiresAt           DateTime?\n  createdAt           DateTime\n  updatedAt           DateTime\n  permissions         String?\n  metadata            String?\n\n  @@map(\"apikey\")\n}\n\nmodel logs {\n  id        BigInt   @id @default(autoincrement())\n  createdAt DateTime @default(now())\n  type      String\n  msg       String\n}\n",
-  "inlineSchemaHash": "50330be7f2e9424f3b0d2216b18d2e0412f58c23e4595c5160fcea99b28b23eb",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel student {\n  rollNo String @id\n  name   String\n\n  cf_id         String? @unique\n  cf_rating     Int?\n  cf_max_rating Int?\n  cf_max_rank   String?\n  cf_rank       String?\n\n  lc_id          String? @unique\n  lc_ranking     Int?\n  lc_star_rating Float?\n  lc_badge       String?\n\n  cc_id             String? @unique\n  cc_current_rating Int?\n  cc_max_rating     Int?\n  cc_star_rating    String?\n}\n\nmodel User {\n  id            String    @id @default(uuid())\n  name          String\n  email         String\n  emailVerified Boolean\n  image         String?\n  createdAt     DateTime\n  updatedAt     DateTime\n  sessions      Session[]\n  accounts      Account[]\n\n  apikeys Apikey[]\n\n  @@unique([email])\n  @@map(\"user\")\n}\n\nmodel Session {\n  id        String   @id\n  expiresAt DateTime\n  token     String\n  createdAt DateTime\n  updatedAt DateTime\n  ipAddress String?\n  userAgent String?\n  userId    String\n  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@unique([token])\n  @@map(\"session\")\n}\n\nmodel Account {\n  id                    String    @id\n  accountId             String\n  providerId            String\n  userId                String\n  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)\n  accessToken           String?\n  refreshToken          String?\n  idToken               String?\n  accessTokenExpiresAt  DateTime?\n  refreshTokenExpiresAt DateTime?\n  scope                 String?\n  password              String?\n  createdAt             DateTime\n  updatedAt             DateTime\n\n  @@map(\"account\")\n}\n\nmodel Verification {\n  id         String    @id\n  identifier String\n  value      String\n  expiresAt  DateTime\n  createdAt  DateTime?\n  updatedAt  DateTime?\n\n  @@map(\"verification\")\n}\n\nmodel Apikey {\n  id                  String    @id\n  name                String?\n  start               String?\n  prefix              String?\n  key                 String\n  userId              String\n  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)\n  refillInterval      Int?\n  refillAmount        Int?\n  lastRefillAt        DateTime?\n  enabled             Boolean?\n  rateLimitEnabled    Boolean?\n  rateLimitTimeWindow Int?\n  rateLimitMax        Int?\n  requestCount        Int?\n  remaining           Int?\n  lastRequest         DateTime?\n  expiresAt           DateTime?\n  createdAt           DateTime\n  updatedAt           DateTime\n  permissions         String?\n  metadata            String?\n\n  @@map(\"apikey\")\n}\n\nmodel logs {\n  id        BigInt   @id @default(autoincrement())\n  createdAt DateTime @default(now())\n  type      String\n  msg       String\n}\n",
+  "inlineSchemaHash": "7a2a48627e4f21ccd82d3f219b0ebb3568d727abb343a27650c6a0f04016a2f2",
   "copyEngine": true
 }
 
@@ -302,6 +307,10 @@ Object.assign(exports, Prisma)
 // file annotations for bundling tools to include these files
 path.join(__dirname, "libquery_engine-darwin-arm64.dylib.node");
 path.join(process.cwd(), "generated/prisma/libquery_engine-darwin-arm64.dylib.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-rhel-openssl-3.0.x.so.node");
+path.join(process.cwd(), "generated/prisma/libquery_engine-rhel-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "generated/prisma/schema.prisma")
