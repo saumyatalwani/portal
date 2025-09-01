@@ -1,5 +1,5 @@
 // global.d.ts
-import { PrismaClient } from '@/app/generated/prisma';
+import { PrismaClient } from '@/generated/prisma';
 
 /* eslint-disable no-var */
 declare global {
