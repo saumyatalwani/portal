@@ -18,11 +18,17 @@ export default async function Layout({
   const session = await auth.api.getSession({ headers: await headers() });
 
   const user = session?.user;
+  if (!user) {
+    redirect('/login') 
+  }
 
-  if (!user) redirect('/login')
+  if(user.role != 'admin'){
+    redirect('/dashboard')
+  }
+  
   return (
     <>
-      <NavBar icon={user.name.slice(0,1)} role={user.role ?? 'user'}/>
+      <NavBar icon={user.name.slice(0,1)} role={user.role}/>
       <div
         className={`px-10`}
       >

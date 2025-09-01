@@ -3,6 +3,7 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import prisma from "./prisma";
 //import { nextCookies } from "better-auth/next-js";
 import { apiKey } from "better-auth/plugins"
+import { admin } from "better-auth/plugins";
 
 export const auth = betterAuth({
   emailAndPassword: {
@@ -14,5 +15,6 @@ export const auth = betterAuth({
   plugins: [
     apiKey(),  // ✅ no rate limit config
     //nextCookies(),
+    admin()
   ],
 });
