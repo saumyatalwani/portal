@@ -9,5 +9,5 @@ export async function GET(req: Request) {
   if (!session) {return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });}
   
   const list = await prisma.student.findMany();
-  return NextResponse.json({ data : [] },{ status: 200 });
+  return NextResponse.json({ data : list },{ status: 200 });
 }
