@@ -93,7 +93,22 @@ export async function GET(req: Request) {
         },
       });
     }
-      
+    for (const r of results) {
+      const dbStudent = await prisma.student.findUnique({
+        where: { cf_id: r.handle },
+      });
+
+      if (!dbStudent) {
+        // log the mismatch
+        await prisma.logs.create({
+          data: {
+            type: "WARN",
+            msg: `CF handle mismatch: API returned "${r.handle}", but no student record matched`,
+          },
+        });
+        console.warn(`CF handle mismatch: ${r.handle}`);
+      }
+    }
     const updates = results.map((r: any) => ({
       where: { cf_id: r.handle },
       data: {
