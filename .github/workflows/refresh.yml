@@ -1,0 +1,28 @@
+name: Weekly API Calls
+
+on:
+  schedule:
+    - cron: "0 0 * * 0" # every Sunday at 00:00 UTC
+  workflow_dispatch:
+
+jobs:
+  call-apis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call /api/codechef
+        run: |
+          curl -X GET "${{ secrets.APP_URL }}/api/codechef" \
+            -H "x-api-key: ${{ secrets.API_KEY }}" \
+            -H "Content-Type: application/json"
+
+      - name: Call /api/codeforces
+        run: |
+          curl -X GET "${{ secrets.APP_URL }}/api/codeforces" \
+            -H "x-api-key: ${{ secrets.API_KEY }}" \
+            -H "Content-Type: application/json"
+
+      - name: Call /api/leetcode
+        run: |
+          curl -X GET "${{ secrets.APP_URL }}/api/leetcode" \
+            -H "x-api-key: ${{ secrets.API_KEY }}" \
+            -H "Content-Type: application/json"
