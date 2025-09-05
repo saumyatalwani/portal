@@ -3,9 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/common/DataTable";
 import { ArrowUpDown } from "lucide-react";
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef,SortingFn } from "@tanstack/react-table";
 import { student } from "@/generated/prisma";
 import React from "react";
+import { cfRankIndex,lcBadgeIndex } from "./sort";
 
 export default function DashboardTable({data}: {
     data : student[] | undefined
@@ -25,79 +26,130 @@ export default function DashboardTable({data}: {
       header: "Name"
     },
     {
-      accessorKey: "cf_max_rank",
+      accessorKey: "placement_status",
       header: ({ column }) => (
         <Button variant="ghost" onClick={() => column.toggleSorting()}>
-          Code Forces Max Rank <ArrowUpDown className="ml-2 h-4 w-4" />
+          Placement Status <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       ),
     },
     {
-      accessorKey: "cf_rank",
-      header: ({ column }) => (
-        <Button variant="ghost" onClick={() => column.toggleSorting()}>
-          CF Current Rank <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      ),
+    accessorKey: "cf_max_rank",
+    accessorFn: (row) => {
+      const value = row.cf_max_rank?.toLowerCase() as keyof typeof cfRankIndex | undefined;
+      return value ? cfRankIndex[value] : undefined;
     },
+    header: ({ column }) => (
+      <Button variant="ghost" onClick={() => column.toggleSorting()}>
+        CF Max Rank <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    ),
+    cell: ({ row }) => row.original.cf_max_rank ?? "-",
+    sortUndefined: "last",
+    sortDescFirst: false, 
+  },
+    {
+    accessorKey: "cf_rank",
+    accessorFn: (row) => {
+      const value = row.cf_rank?.toLowerCase() as keyof typeof cfRankIndex | undefined;
+      return value ? cfRankIndex[value] : undefined;
+    },
+    header: ({ column }) => (
+      <Button variant="ghost" onClick={() => column.toggleSorting()}>
+        CF Current Rank <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    ),
+    cell: ({ row }) => row.original.cf_rank ?? "-",
+    sortUndefined: "last",
+    sortDescFirst: false, 
+  },
     {
       accessorKey: "cf_rating",
       header: ({ column }) => (
         <Button variant="ghost" onClick={() => column.toggleSorting()}>
-          CForces Rating <ArrowUpDown className="ml-2 h-4 w-4" />
+          CF Rating <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       ),
+      accessorFn: (row: student) => row.cf_rating ?? undefined,
+      sortUndefined: "last",
+      sortDescFirst: false, 
     },{
       accessorKey: "cf_max_rating",
       header: ({ column }) => (
         <Button variant="ghost" onClick={() => column.toggleSorting()}>
-          CForces Max Rating <ArrowUpDown className="ml-2 h-4 w-4" />
+          CF Max Rating <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       ),
+      accessorFn: (row: student) => row.cf_max_rating ?? undefined,
+      sortUndefined: "last",
+      sortDescFirst: false,
     },{
-      accessorKey: "lc_badge",
-      header: ({ column }) => (
-        <Button variant="ghost" onClick={() => column.toggleSorting()}>
-          LeetCode Badge <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      ),
-    },
+  accessorKey: "lc_badge",
+  accessorFn: (row) => {
+    const value = row.lc_badge?.toLowerCase() as keyof typeof lcBadgeIndex | undefined;
+    return value ? lcBadgeIndex[value] : undefined; // numeric value for sorting
+  },
+  header: ({ column }) => (
+    <Button variant="ghost" onClick={() => column.toggleSorting()}>
+      LC Badge <ArrowUpDown className="ml-2 h-4 w-4" />
+    </Button>
+  ),
+  cell: ({ row }) => row.original.lc_badge ?? "-",
+  sortUndefined: "last",
+  sortDescFirst: false
+},
+
     {
       accessorKey: "lc_ranking",
       header: ({ column }) => (
         <Button variant="ghost" onClick={() => column.toggleSorting()}>
-          LeetCode Ranking <ArrowUpDown className="ml-2 h-4 w-4" />
+          LC Ranking <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       ),
+      accessorFn: (row: student) => row.lc_ranking ?? undefined,
+      sortUndefined: "last",
+      sortDescFirst: false,
     },
     {
       accessorKey: "lc_star_rating",
       header: ({ column }) => (
         <Button variant="ghost" onClick={() => column.toggleSorting()}>
-          LeetCode Star Rating <ArrowUpDown className="ml-2 h-4 w-4" />
+          LC Star Rating <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       ),
+      accessorFn: (row: student) => row.lc_star_rating ?? undefined,
+      sortUndefined: "last",
+      sortDescFirst: false,
     },{
       accessorKey: "cc_current_rating",
       header: ({ column }) => (
         <Button variant="ghost" onClick={() => column.toggleSorting()}>
-          CodeChef Current Rating <ArrowUpDown className="ml-2 h-4 w-4" />
+          CC Current Rating <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       ),
+      accessorFn: (row: student) => row.cc_current_rating ?? undefined,
+      sortUndefined: "last",
+      sortDescFirst: false,
     },{
       accessorKey: "cc_max_rating",
       header: ({ column }) => (
         <Button variant="ghost" onClick={() => column.toggleSorting()}>
-          CodeChef Max Rating <ArrowUpDown className="ml-2 h-4 w-4" />
+          CC Max Rating <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       ),
+      accessorFn: (row: student) => row.cc_max_rating ?? undefined,
+      sortUndefined: "last",
+      sortDescFirst: false,
     },{
       accessorKey: "cc_star_rating",
       header: ({ column }) => (
         <Button variant="ghost" onClick={() => column.toggleSorting()}>
-          CodeChef Star Rating <ArrowUpDown className="ml-2 h-4 w-4" />
+          CC Star Rating <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       ),
+      accessorFn: (row: student) => row.cc_star_rating ?? undefined,
+      sortUndefined: "last",
+      sortDescFirst: false,
     },
   ];
 
